@@ -20,6 +20,6 @@ Both applications, *connect4\[.exe\]* and *c4\[.exe\]*, must be in the same dire
 
 ## Language
 
-You can change the language of the interface by starting the application with a parameter like, for example, `-lde-de` or `--lang=de-de` (for a german-speaking interface). Language currently available are french and german.
+You can change the language of the interface by starting the application with a parameter like, for example, `-l de-de` or `--lang=de-de` (for a german-speaking interface). Language currently available are french and german.
 
 The translation is done by the [Lightweight Translation Manager](https://www.lazarusforum.de/viewtopic.php?t=11928).
