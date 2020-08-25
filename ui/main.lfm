@@ -1,0 +1,105 @@
+object Form1: TForm1
+  Left = 494
+  Height = 468
+  Top = 95
+  Width = 384
+  Caption = 'Four-in-a-row'
+  ClientHeight = 449
+  ClientWidth = 384
+  Menu = MMMenu
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnPaint = FormPaint
+  LCLVersion = '2.0.8.0'
+  Visible = True
+  object BTInsert: TButton
+    Left = 4
+    Height = 24
+    Top = 396
+    Width = 20
+    OnClick = BTInsertClick
+    TabOrder = 0
+    Visible = False
+  end
+  object MMEngineOutput: TMemo
+    Left = 0
+    Height = 40
+    Top = 449
+    Width = 384
+    BorderStyle = bsNone
+    Color = clFuchsia
+    OnChange = MMEngineOutputChange
+    TabOrder = 1
+  end
+  object LBMessage: TLabel
+    Left = 0
+    Height = 17
+    Top = 432
+    Width = 384
+    AutoSize = False
+    Color = clCream
+    ParentColor = False
+    Transparent = False
+  end
+  object TMTimer: TTimer
+    Interval = 40
+    OnTimer = TMTimerTimer
+    left = 296
+    top = 368
+  end
+  object MMMenu: TMainMenu
+    left = 296
+    top = 296
+    object MIFile: TMenuItem
+      Caption = 'Game'
+      object MIRestart: TMenuItem
+        Caption = 'Restart'
+        OnClick = MIRestartClick
+      end
+      object MIQuit: TMenuItem
+        Caption = 'Quit'
+        OnClick = MIQuitClick
+      end
+    end
+    object MIOptions: TMenuItem
+      Caption = 'Options'
+      object MIMode: TMenuItem
+        Caption = 'Mode'
+        object MIComputerWhite: TMenuItem
+          Caption = 'Computer plays White'
+          OnClick = MIComputerWhiteClick
+        end
+        object MIComputerBlack: TMenuItem
+          Caption = 'Computer plays Black'
+          OnClick = MIComputerBlackClick
+        end
+        object MIHumanVsHuman: TMenuItem
+          Caption = 'Human vs Human'
+          OnClick = MIHumanVsHumanClick
+        end
+      end
+      object MILevel: TMenuItem
+        Caption = 'Level'
+        object MIWeak: TMenuItem
+          Caption = 'Weak'
+          OnClick = MIWeakClick
+        end
+        object MINormal: TMenuItem
+          Caption = 'Normal'
+          OnClick = MINormalClick
+        end
+        object MIStrong: TMenuItem
+          Caption = 'Strong'
+          OnClick = MIStrongClick
+        end
+      end
+    end
+    object MIHelp: TMenuItem
+      Caption = 'Help'
+      object MIAbout: TMenuItem
+        Caption = 'About'
+        OnClick = MIAboutClick
+      end
+    end
+  end
+end
