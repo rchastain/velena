@@ -186,12 +186,22 @@ begin
 
   TransMgr.IniFile := ExtractFilePath(Application.ExeName) + 'lang.cfg';
   if Application.HasOption('l', 'lang') then
-    TransMgr.Language := Application.GetOptionValue('lang')
+    TransMgr.Language := Application.GetOptionValue('l', 'lang')
   else
     TransMgr.Language := 'en-gb';
   LogLn(Format('TransMgr.LanguageName=%s', [TransMgr.LanguageName]));
   Caption := TransMgr.GetString('appname');
   LBMessage.Caption := TransMgr.GetString('whitetomove');
+
+  MIFile.Caption := TransMgr.GetString('game');
+  MIRestart.Caption := TransMgr.GetString('newgame');
+  MIQuit.Caption := TransMgr.GetString('exit');
+  MIOptions.Caption := TransMgr.GetString('options');
+  MIComputerWhite.Caption := TransMgr.GetString('computerwhite');
+  MIComputerBlack.Caption := TransMgr.GetString('computerblack');
+  MIHumanVsHuman.Caption := TransMgr.GetString('humanvshuman');
+  MIHelp.Caption := TransMgr.GetString('help');
+  MIAbout.Caption := TransMgr.GetString('about');
 
   FWaiting := FALSE;
   FAnimation.Done := TRUE;

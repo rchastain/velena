@@ -1,6 +1,6 @@
 object Form1: TForm1
   Left = 494
-  Height = 468
+  Height = 478
   Top = 95
   Width = 384
   Caption = 'Four-in-a-row'
@@ -10,7 +10,7 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnPaint = FormPaint
-  LCLVersion = '2.0.8.0'
+  LCLVersion = '2.0.10.0'
   Visible = True
   object BTInsert: TButton
     Left = 4
@@ -44,12 +44,12 @@ object Form1: TForm1
   object TMTimer: TTimer
     Interval = 40
     OnTimer = TMTimerTimer
-    left = 296
-    top = 368
+    Left = 296
+    Top = 368
   end
   object MMMenu: TMainMenu
-    left = 296
-    top = 296
+    Left = 296
+    Top = 296
     object MIFile: TMenuItem
       Caption = 'Game'
       object MIRestart: TMenuItem
