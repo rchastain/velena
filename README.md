@@ -1,2 +1,2 @@
 # Velena
-Connect 4 engine by Giuliano Bertoletti, with a new GUI developed with Lazarus.
+Connect 4 engine by Giuliano Bertoletti, with a new GUI.
