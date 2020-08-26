@@ -1,5 +1,5 @@
 # Velena
-Connect 4 engine by Giuliano Bertoletti, with an original GUI.
+Connect-Four engine by Giuliano Bertoletti, with an original GUI.
 
 ![alt text](screenshots/linux-manjaro-english.png)
 
