@@ -40,7 +40,7 @@ type
 
   TForm1 = class(TForm)
     BTInsert: TButton;
-    LBMessage: TLabel;
+    EDMessage: TEdit;
     MMMenu: TMainMenu;
     MMEngineOutput: TMemo;
     MIMode: TMenuItem;
@@ -192,7 +192,7 @@ begin
     TransMgr.Language := 'en-gb';
   LogLn(Format('TransMgr.LanguageName=%s', [TransMgr.LanguageName]));
   Caption := TransMgr.GetString('appname');
-  LBMessage.Caption := TransMgr.GetString('whitetomove');
+  EDMessage.Caption := TransMgr.GetString('whitetomove');
 
   MIFile.Caption := TransMgr.GetString('game');
   MIRestart.Caption := TransMgr.GetString('newgame');
@@ -232,8 +232,9 @@ procedure TForm1.FormActivate(Sender: TObject);
 var
   h: integer;
 begin
+  (* Hide MMEngineOutput *)
   h := Self.Height - Self.ClientHeight;
-  Self.Height := LBMessage.Top + LBMessage.Height + h;
+  Self.Height := EDMessage.Top + EDMessage.Height + h;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -403,12 +404,12 @@ begin
       if Length(LMessage) > 0 then
       begin
         FGameOver := TRUE;
-        LBMessage.Caption := LMessage;
+        EDMessage.Caption := LMessage;
       end else
         if FDisk = CWhite then
-          LBMessage.Caption := TransMgr.GetString('whitetomove')
+          EDMessage.Caption := TransMgr.GetString('whitetomove')
         else
-          LBMessage.Caption := TransMgr.GetString('blacktomove');
+          EDMessage.Caption := TransMgr.GetString('blacktomove');
     end else
     begin
       LColor := FVisualGrid[FAnimation.x, FAnimation.y];
