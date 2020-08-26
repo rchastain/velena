@@ -1,7 +1,7 @@
 # Velena
-Connect 4 engine by Giuliano Bertoletti, with a new GUI.
+Connect 4 engine by Giuliano Bertoletti, with an original GUI.
 
-![alt text](screenshot/four-in-a-row.png)
+![alt text](screenshots/linux-manjaro-english.png)
 
 ## Build instructions
 
@@ -22,4 +22,4 @@ Both applications, *connect4\[.exe\]* and *c4\[.exe\]*, must be in the same dire
 
 You can change the language of the interface by starting the application with a parameter like, for example, `-l de-de` or `--lang=de-de` (for a german-speaking interface). Language currently available are french and german.
 
-The translation is done by the [Lightweight Translation Manager](https://www.lazarusforum.de/viewtopic.php?t=11928).
+The translation is done by means of [Lightweight Translation Manager](https://www.lazarusforum.de/viewtopic.php?t=11928).
