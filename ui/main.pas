@@ -59,6 +59,7 @@ type
     MIAbout: TMenuItem;
     TMTimer: TTimer;
     procedure BTInsertClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormPaint(Sender: TObject);
@@ -225,6 +226,14 @@ begin
   x := (Sender as TButton).Tag;
   if FGrid[x, 6] = CEmpty then
     InsertDisk(x);
+end;
+
+procedure TForm1.FormActivate(Sender: TObject);
+var
+  h: integer;
+begin
+  h := Self.Height - Self.ClientHeight;
+  Self.Height := LBMessage.Top + LBMessage.Height + h;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);

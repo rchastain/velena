@@ -1,12 +1,13 @@
 object Form1: TForm1
   Left = 494
-  Height = 478
+  Height = 522
   Top = 95
   Width = 384
   Caption = 'Four-in-a-row'
-  ClientHeight = 449
+  ClientHeight = 493
   ClientWidth = 384
   Menu = MMMenu
+  OnActivate = FormActivate
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnPaint = FormPaint
@@ -24,7 +25,7 @@ object Form1: TForm1
   object MMEngineOutput: TMemo
     Left = 0
     Height = 40
-    Top = 449
+    Top = 453
     Width = 384
     BorderStyle = bsNone
     Color = clFuchsia
