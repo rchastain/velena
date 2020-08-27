@@ -1,7 +1,6 @@
 
 program c4;
 
-{.$APPTYPE GUI}
 {$MODE OBJFPC}{$H+}
 
 uses

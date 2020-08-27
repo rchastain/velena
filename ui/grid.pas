@@ -3,6 +3,9 @@ unit grid;
 
 interface
 
+uses
+  SysUtils;
+  
 const
   CEmpty  =  0;
   CDisc   =  1;
@@ -123,24 +126,23 @@ function GridToText(const g: TGrid): string;
 const
   CSymbol: array[TDisk] of char = ('O', '.', 'X', '#');
   CCanvas =
-  '#################'#13#10 +
-  '# x x x x x x x #'#13#10 +
-  '# x x x x x x x #'#13#10 +
-  '# x x x x x x x #'#13#10 +
-  '# x x x x x x x #'#13#10 +
-  '# x x x x x x x #'#13#10 +
-  '# x x x x x x x #'#13#10 +
+  '#################'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
+  '# %s %s %s %s %s %s %s #'+ LineEnding +
   '#################';
-var
-  x, y, i: integer;
 begin
-  result := CCanvas;
-  for y := 6 downto 1 do
-    for x := 1 to 7 do
-    begin
-      i := 1 + 19 * (6 - y + 1) + 2 * x;
-      result[i] := CSymbol[g[x, y]];
-    end;
+  result := Format(CCanvas, [
+    CSymbol[g[1, 6]], CSymbol[g[2, 6]], CSymbol[g[3, 6]], CSymbol[g[4, 6]], CSymbol[g[5, 6]], CSymbol[g[6, 6]], CSymbol[g[7, 6]],
+    CSymbol[g[1, 5]], CSymbol[g[2, 5]], CSymbol[g[3, 5]], CSymbol[g[4, 5]], CSymbol[g[5, 5]], CSymbol[g[6, 5]], CSymbol[g[7, 5]],
+    CSymbol[g[1, 4]], CSymbol[g[2, 4]], CSymbol[g[3, 4]], CSymbol[g[4, 4]], CSymbol[g[5, 4]], CSymbol[g[6, 4]], CSymbol[g[7, 4]],
+    CSymbol[g[1, 3]], CSymbol[g[2, 3]], CSymbol[g[3, 3]], CSymbol[g[4, 3]], CSymbol[g[5, 3]], CSymbol[g[6, 3]], CSymbol[g[7, 3]],
+    CSymbol[g[1, 2]], CSymbol[g[2, 2]], CSymbol[g[3, 2]], CSymbol[g[4, 2]], CSymbol[g[5, 2]], CSymbol[g[6, 2]], CSymbol[g[7, 2]],
+    CSymbol[g[1, 1]], CSymbol[g[2, 1]], CSymbol[g[3, 1]], CSymbol[g[4, 1]], CSymbol[g[5, 1]], CSymbol[g[6, 1]], CSymbol[g[7, 1]]
+  ]);
 end;
 
 function LineValue(const d: TDisk; const l: TLine; const g: TGrid): integer;
@@ -196,7 +198,6 @@ var
 begin
   x := l.x1;
   y := l.y1;
-  
   repeat
     Inc(x, l.dx);
     Inc(y, l.dy);
@@ -210,7 +211,7 @@ begin
   for i := 0 to 24 do
   begin
     LineTest(CLines[i]);
-    WriteLn(i, ' OK');
+    WriteLn(Format('%2.0d OK', [i]));
   end;
 end;
 
