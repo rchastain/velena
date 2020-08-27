@@ -178,13 +178,6 @@ begin
 
   FExpr := TRegExpr.Create('Velena answers in (\d)');
 
-  (*
-  Height := 478;
-  *)
-  (*
-  Height := LBMessage.Top + LBMessage.Height + LCLIntf.GetSystemMetrics(SM_CYCAPTION) + 2 * LCLIntf.GetSystemMetrics(SM_CYSIZEFRAME);
-  *)
-
   TransMgr.IniFile := ExtractFilePath(Application.ExeName) + 'lang.cfg';
   if Application.HasOption('l', 'lang') then
     TransMgr.Language := Application.GetOptionValue('l', 'lang')
@@ -208,20 +201,15 @@ begin
   FAnimation.Done := TRUE;
   MIStrong.Click;
   Restart;
+  TMTimer.Enabled := TRUE;
 end;
 
 procedure TForm1.BTInsertClick(Sender: TObject);
 var
   x: integer;
 begin
-  if not FAnimation.Done then
+  if FGameOver or not FAnimation.Done then
     Exit;
-
-  if FGameOver then
-  begin
-    Restart;
-    Exit;
-  end;
 
   x := (Sender as TButton).Tag;
   if FGrid[x, 6] = CEmpty then
@@ -346,7 +334,7 @@ end;
 
 procedure TForm1.MIAboutClick(Sender: TObject);
 begin
-  ShowMessage('Connect 4 engine by Giuliano Bertoletti, with a new GUI.');
+  ShowMessage('Connect-Four engine by Giuliano Bertoletti.');
 end;
 
 procedure TForm1.MIQuitClick(Sender: TObject);
@@ -394,6 +382,7 @@ begin
     if (FAnimation.y = 1) or (FVisualGrid[FAnimation.x, FAnimation.y - 1] <> CColorEmpty) then
     begin
       FAnimation.Done := TRUE;
+      LogLn(GridToText(FGrid));
       LMessage := '';
       if GridValue(CBlack, FGrid) >= 4 then
         LMessage := TransMgr.GetString('blackwins')

@@ -41,6 +41,7 @@ object Form1: TForm1
     TabOrder = 2
   end
   object TMTimer: TTimer
+    Enabled = False
     Interval = 40
     OnTimer = TMTimerTimer
     Left = 296

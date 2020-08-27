@@ -43,18 +43,18 @@ const
     (x1: 5; y1: 1; x2: 5; y2: 6; dx: 0; dy: 1),
     (x1: 6; y1: 1; x2: 6; y2: 6; dx: 0; dy: 1),
     (x1: 7; y1: 1; x2: 7; y2: 6; dx: 0; dy: 1),
-    (x1: 1; y1: 1; x2: 7; y2: 6; dx: 1; dy: 1),
-    (x1: 1; y1: 2; x2: 6; y2: 6; dx: 1; dy: 1),
-    (x1: 1; y1: 3; x2: 5; y2: 6; dx: 1; dy: 1),
-    (x1: 1; y1: 4; x2: 5; y2: 1; dx: 1; dy:-1),
-    (x1: 1; y1: 5; x2: 6; y2: 1; dx: 1; dy:-1),
-    (x1: 1; y1: 6; x2: 7; y2: 1; dx: 1; dy:-1),
-    (x1: 7; y1: 1; x2: 7; y2: 6; dx:-1; dy: 1),
-    (x1: 7; y1: 2; x2: 6; y2: 6; dx:-1; dy: 1),
-    (x1: 7; y1: 3; x2: 5; y2: 6; dx:-1; dy: 1),
-    (x1: 7; y1: 4; x2: 5; y2: 1; dx:-1; dy:-1),
-    (x1: 7; y1: 5; x2: 6; y2: 1; dx:-1; dy:-1),
-    (x1: 7; y1: 6; x2: 7; y2: 1; dx:-1; dy:-1)
+    (x1: 1; y1: 1; x2: 6; y2: 6; dx: 1; dy: 1),
+    (x1: 1; y1: 2; x2: 5; y2: 6; dx: 1; dy: 1),
+    (x1: 1; y1: 3; x2: 4; y2: 6; dx: 1; dy: 1),
+    (x1: 1; y1: 4; x2: 4; y2: 1; dx: 1; dy:-1),
+    (x1: 1; y1: 5; x2: 5; y2: 1; dx: 1; dy:-1),
+    (x1: 1; y1: 6; x2: 6; y2: 1; dx: 1; dy:-1),
+    (x1: 7; y1: 1; x2: 2; y2: 6; dx:-1; dy: 1),
+    (x1: 7; y1: 2; x2: 3; y2: 6; dx:-1; dy: 1),
+    (x1: 7; y1: 3; x2: 4; y2: 6; dx:-1; dy: 1),
+    (x1: 7; y1: 4; x2: 4; y2: 1; dx:-1; dy:-1),
+    (x1: 7; y1: 5; x2: 3; y2: 1; dx:-1; dy:-1),
+    (x1: 7; y1: 6; x2: 2; y2: 1; dx:-1; dy:-1)
   );
 
 procedure EmptyGrid(var g: TGrid);
@@ -155,7 +155,7 @@ begin
   b := 0;
   
   repeat
-    if g[x,y] = d then
+    if g[x, y] = d then
       Inc(n)
     else
       n := 0;
@@ -189,4 +189,32 @@ begin
   end;
 end;
 
+(*
+procedure LineTest(const l: TLine);
+var
+  x, y: integer;
+begin
+  x := l.x1;
+  y := l.y1;
+  
+  repeat
+    Inc(x, l.dx);
+    Inc(y, l.dy);
+  until (x = l.x2) and (y = l.y2);
+end;
+
+procedure AllLinesTest;
+var
+  i: integer;
+begin
+  for i := 0 to 24 do
+  begin
+    LineTest(CLines[i]);
+    WriteLn(i, ' OK');
+  end;
+end;
+
+begin
+  AllLinesTest;
+*)
 end.
