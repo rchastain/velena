@@ -1,6 +1,10 @@
 # Velena
-Connect Four engine by Giuliano Bertoletti, with an original GUI. The GUI has been developed with Lazarus, using the [BGRABitmap](https://github.com/bgrabitmap/bgrabitmap) library.
 
+## Overview
+
+Connect Four engine by Giuliano Bertoletti, with an original GUI.
+
+The GUI has been developed with Lazarus, using the [BGRABitmap](https://github.com/bgrabitmap/bgrabitmap) library.
 ![alt text](screenshots/linux-manjaro-english.png)
 
 ## Build instructions
