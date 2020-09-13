@@ -1,7 +1,5 @@
 # Velena
-Connect-Four engine by Giuliano Bertoletti, with an original GUI.
-
-The GUI has been developed with Lazarus, using the [BGRABitmap](https://github.com/bgrabitmap/bgrabitmap) library.
+Connect Four engine by Giuliano Bertoletti, with an original GUI. The GUI has been developed with Lazarus, using the [BGRABitmap](https://github.com/bgrabitmap/bgrabitmap) library.
 
 ![alt text](screenshots/linux-manjaro-english.png)
 
@@ -22,10 +20,10 @@ Both applications, **connect4\[.exe\]** and **connect4g\[.exe\]**, must be in th
 
 ## Language
 
-You can change the language of the interface by starting the application with a parameter like, for example, `-l de-de` or `--lang=de-de` (for a german-speaking interface). Language currently available are french and german.
+You can change the language of the interface by starting the application with a parameter like, for example, `-l de-de` or `--lang=de-de` (for a german-speaking interface). Language currently available are english, french and german.
 
 ## Credits
 
 The translation is done by means of [Lightweight Translation Manager](https://www.lazarusforum.de/viewtopic.php?t=11928) by Patrick Lampke.
 
-The wood texture comes from the [5 wood textures](https://opengameart.org/content/5-wood-textures) package.
+The wood texture comes from this page: [Five wood textures](https://opengameart.org/content/5-wood-textures).
