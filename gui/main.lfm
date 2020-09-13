@@ -1,0 +1,141 @@
+object Form1: TForm1
+  Left = 447
+  Height = 549
+  Top = 87
+  Width = 477
+  AutoSize = True
+  Caption = 'Four-in-a-row'
+  ClientHeight = 520
+  ClientWidth = 477
+  Menu = MMMenu
+  OnClose = FormClose
+  OnCreate = FormCreate
+  Position = poWorkAreaCenter
+  LCLVersion = '2.0.10.0'
+  object PBGrid: TPaintBox
+    Left = 0
+    Height = 432
+    Top = 0
+    Width = 432
+    OnMouseMove = PBGridMouseMove
+    OnMouseUp = PBGridMouseUp
+    OnPaint = PBGridPaint
+  end
+  object STMessage: TStaticText
+    Left = 0
+    Height = 21
+    Top = 432
+    Width = 71
+    AutoSize = True
+    Caption = 'STMessage'
+    TabOrder = 0
+  end
+  object MMMenu: TMainMenu
+    Left = 368
+    Top = 320
+    object MIGame: TMenuItem
+      Caption = 'Game'
+      object MINew: TMenuItem
+        Caption = 'New game'
+        OnClick = MINewClick
+      end
+      object MISeparator1: TMenuItem
+        Caption = '-'
+      end
+      object MIQuit: TMenuItem
+        Caption = 'Quit'
+        OnClick = MIQuitClick
+      end
+    end
+    object MIOptions: TMenuItem
+      Caption = 'Options'
+      object MIMode: TMenuItem
+        Caption = 'Mode'
+        object MIComputerWhite: TMenuItem
+          AutoCheck = True
+          Caption = 'Computer plays white'
+          RadioItem = True
+          OnClick = MIComputerWhiteClick
+        end
+        object MIComputerBlack: TMenuItem
+          AutoCheck = True
+          Caption = 'Computer plays black'
+          Checked = True
+          RadioItem = True
+          OnClick = MIComputerBlackClick
+        end
+        object MIHumanVsHuman: TMenuItem
+          AutoCheck = True
+          Caption = 'Human vs human'
+          RadioItem = True
+          OnClick = MIHumanVsHumanClick
+        end
+      end
+      object MILevel: TMenuItem
+        Caption = 'Level'
+        object MIWeak: TMenuItem
+          AutoCheck = True
+          Caption = 'Weak'
+          RadioItem = True
+          OnClick = MIWeakClick
+        end
+        object MINormal: TMenuItem
+          AutoCheck = True
+          Caption = 'Normal'
+          RadioItem = True
+          OnClick = MINormalClick
+        end
+        object MIStrong: TMenuItem
+          AutoCheck = True
+          Caption = 'Strong'
+          RadioItem = True
+          OnClick = MIStrongClick
+        end
+      end
+      object MISeparator2: TMenuItem
+        Caption = '-'
+      end
+      object MIGravity: TMenuItem
+        AutoCheck = True
+        Caption = 'Gravity effect'
+        Checked = True
+      end
+      object MISize: TMenuItem
+        Caption = 'Size'
+        object MISmall: TMenuItem
+          AutoCheck = True
+          Caption = 'Small'
+          RadioItem = True
+          OnClick = MISmallClick
+        end
+        object MIMedium: TMenuItem
+          AutoCheck = True
+          Caption = 'Medium'
+          RadioItem = True
+          OnClick = MIMediumClick
+        end
+        object MILarge: TMenuItem
+          AutoCheck = True
+          Caption = 'Large'
+          Checked = True
+          RadioItem = True
+          OnClick = MILargeClick
+        end
+      end
+    end
+    object MIHelp: TMenuItem
+      Caption = 'Help'
+      object MIAbout: TMenuItem
+        Caption = 'About'
+        OnClick = MIAboutClick
+      end
+    end
+  end
+  object TMTimer: TTimer
+    Enabled = False
+    Interval = 20
+    OnTimer = TMTimerTimer
+    Left = 368
+    Top = 376
+  end
+end
