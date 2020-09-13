@@ -26,4 +26,4 @@ You can change the language of the interface by starting the application with a 
 
 The translation is done by means of [Lightweight Translation Manager](https://www.lazarusforum.de/viewtopic.php?t=11928) by Patrick Lampke.
 
-The *Wood* style uses a picture from the [5 wood textures](https://opengameart.org/content/5-wood-textures) package.
+The wood texture comes from the [5 wood textures](https://opengameart.org/content/5-wood-textures) package.
