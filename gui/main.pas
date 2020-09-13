@@ -260,7 +260,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Randomize;
-  LogLn('** Velena GUI started at ' + TimeToStr(Time), TRUE);
+  LogLn('** Velena GUI started at ' + TimeToStr(Time) + '.', TRUE);
   CreateStyleMenu(MIOptions, @StyleMenuItemClick);
 
   FStyle := CDefaultStyle;
@@ -290,7 +290,7 @@ begin
     TransMgr.Language := Application.GetOptionValue('l', 'lang')
   else
     TransMgr.Language := CDefaultLanguage;
-  LogLn('** ' + TransMgr.LanguageName);
+  LogLn('** Language: ' + TransMgr.LanguageName);
   Caption := TransMgr.GetString('appname');
   STMessage.Caption := TransMgr.GetString('whitetomove');
   MIGame.Caption := TransMgr.GetString('game');
@@ -314,8 +314,10 @@ begin
     FProcess.Execute;
   end else
   begin
-    ShowMessage('Cannot find ' + CExecutable);
+    LogLn('** Cannot find ''' + CExecutable + '''.');
     MIHumanVsHuman.Click;
+    MIComputerWhite.Enabled := FALSE;
+    MIComputerBlack.Enabled := FALSE;
   end;
 end;
 
@@ -520,7 +522,8 @@ begin
     Draw(FALSE, TRUE);
     if LNextTurn then
       StopAnimation;
-  end else (* Simple animation *)
+  end else
+  (* Simple animation *)
   begin
     Draw(FALSE, TRUE);
     if FAnimation.y < FScale * (8 - FRow) then
@@ -533,29 +536,23 @@ end;
 procedure TForm1.TMTimerTimer(Sender: TObject);
 var
   LDone: boolean;
-
   procedure ReadOutput(AProcess: TProcess);
   var
     LBuffer: string = '';
     LBytesAvailable: dword;
     LBytesRead: longint;
   begin
-    if AProcess.Running then
+    if not AProcess.Running then
+      Exit;
+    LBytesAvailable := AProcess.Output.NumBytesAvailable;
+    LBytesRead := 0;
+    while LBytesAvailable > 0 do
     begin
+      SetLength(LBuffer, LBytesAvailable);
+      LBytesRead := AProcess.OutPut.Read(LBuffer[1], LBytesAvailable);
+      FEngineOutput.Text := FEngineOutput.Text + Copy(LBuffer, 1, LBytesRead);
       LBytesAvailable := AProcess.Output.NumBytesAvailable;
-      LBytesRead := 0;
-      while LBytesAvailable > 0 do
-      begin
-        SetLength(LBuffer, LBytesAvailable);
-        LBytesRead := AProcess.OutPut.Read(LBuffer[1], LBytesAvailable);
-        FEngineOutput.Text := FEngineOutput.Text + Copy(LBuffer, 1, LBytesRead);
-        LBytesAvailable := AProcess.Output.NumBytesAvailable;
-        LDone := FALSE;
-      end;
-    end else
-    begin
-      ShowMessage('Velena stopped unexpectedly.');
-      MIHumanVsHuman.Click;
+      LDone := FALSE;
     end;
   end;
 var
@@ -570,6 +567,10 @@ begin
     Exit;
   end;
 
+  if (not FPlayers[FALSE]) and (not FPlayers[TRUE]) then
+  (* Human versus human mode, no need to continue. *)
+    Exit;
+
   if not FWaiting then
     if (not FSideToMove) and FPlayers[FALSE]
     or (FSideToMove) and FPlayers[TRUE] then
@@ -579,10 +580,20 @@ begin
     end;
 
   FEngineOutput.Clear;
-  repeat
-    LDone := TRUE;
-    ReadOutput(FProcess);
-  until LDone; (* No more output *)
+  if FProcess.Running then
+    repeat
+      LDone := TRUE;
+      ReadOutput(FProcess);
+    until LDone (* No more output *)
+  else
+  begin
+    (* Shouldn't happen, unless Velena stopped to work. *)
+    LogLn('** ' + {$I %LINE%} + ' Engine is not running.');
+    ShowMessage('Velena stopped unexpectedly.');
+    MIHumanVsHuman.Click;
+    MIComputerWhite.Enabled := FALSE;
+    MIComputerBlack.Enabled := FALSE;
+  end;
 
   if FEngineOutput.Count > 0 then
   begin
@@ -610,7 +621,8 @@ begin
     LCommand := Format('%s%s0' + LineEnding, [ALevel, AHistory]);
     FProcess.Input.Write(LCommand[1], Length(LCommand));
     LogLn('>> ' + LCommand);
-  end;
+  end else
+    LogLn('** ' + {$I %LINE%} + ' Engine is not running.');
 end;
 
 end.
