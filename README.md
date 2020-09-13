@@ -9,7 +9,7 @@ The GUI has been developed with Lazarus, using the [BGRABitmap](https://github.c
 
 ## Build instructions
 
-You have to build the engine, which is a C program, and the GUI, which is a Lazarus project.
+You have to build the engine (a C program) and the GUI (a Lazarus project).
 
 To build the engine, open a terminal in **engine** folder and type the following command:
 
@@ -18,9 +18,9 @@ To build the engine, open a terminal in **engine** folder and type the following
 
 The engine must be compiled to 32-bit application, otherwise it doesn't work well. This is the reason for the `-m32` option.
 
-To build the GUI, open with Lazarus the **connect4g.lpi** project in **gui** folder.
+To build the GUI, open with Lazarus the **velena.lpi** project in **gui** folder.
 
-Both applications, **connect4\[.exe\]** and **connect4g\[.exe\]**, must be in the same directory, with **lang.cfg** (a language file) and **white_ob.cn4** (the opening book for the engine).
+Both applications, **connect4\[.exe\]** and **velena\[.exe\]**, must be in the same directory, with **lang.cfg** (a language file) and **white_ob.cn4** (the opening book for the engine).
 
 ## Language
 

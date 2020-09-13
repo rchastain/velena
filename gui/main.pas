@@ -18,6 +18,8 @@ uses
   (* Connect Four grid *)
   Grid;
 
+{$I version.inc}
+
 type
   TPlayers = array[boolean] of boolean;
 
@@ -260,7 +262,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Randomize;
-  LogLn('** Velena GUI started at ' + TimeToStr(Time) + '.', TRUE);
+  LogLn('** ' + CAppInfo, TRUE);
+  LogLn('** ' + CAppName + ' started at ' + TimeToStr(Time) + '.');
   CreateStyleMenu(MIOptions, @StyleMenuItemClick);
 
   FStyle := CDefaultStyle;
@@ -374,7 +377,7 @@ begin
     (* Ask Velena to stop. *)
     LCommand := 'quit' + LineEnding;
     FProcess.Input.Write(LCommand[1], Length(LCommand));
-    LogLn('>> ' + LCommand);
+    LogLn('>> ' + Trim(LCommand));
     FProcess.Terminate(0);
   end;
   FProcess.Free;
@@ -620,7 +623,7 @@ begin
     (* Ask Velena to play. *)
     LCommand := Format('%s%s0' + LineEnding, [ALevel, AHistory]);
     FProcess.Input.Write(LCommand[1], Length(LCommand));
-    LogLn('>> ' + LCommand);
+    LogLn('>> ' + Trim(LCommand));
   end else
     LogLn('** ' + {$I %LINE%} + ' Engine is not running.');
 end;

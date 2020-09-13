@@ -1,4 +1,4 @@
-program connect4g;
+program velena;
 
 {$mode objfpc}{$H+}
 
