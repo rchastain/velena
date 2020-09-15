@@ -5,7 +5,7 @@ object AboutForm: TAboutForm
   Width = 395
   AutoSize = True
   BorderStyle = bsDialog
-  Caption = 'About GW'
+  Caption = 'About Velena GUI'
   ClientHeight = 424
   ClientWidth = 395
   OnCreate = FormCreate
