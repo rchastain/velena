@@ -117,6 +117,9 @@ var
 
 implementation
 
+uses
+  About;
+  
 {$R *.lfm}
 
 procedure LogLn(const ALine: string; const ARewrite: boolean = FALSE);
@@ -263,7 +266,7 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   Randomize;
   LogLn('** ' + CAppInfo, TRUE);
-  LogLn('** ' + CAppName + ' started at ' + TimeToStr(Time) + '.');
+  LogLn('** ' + CAppName + ' started at ' + TimeToStr(Time));
   CreateStyleMenu(MIOptions, @StyleMenuItemClick);
 
   FStyle := CDefaultStyle;
@@ -294,7 +297,7 @@ begin
   else
     TransMgr.Language := CDefaultLanguage;
   LogLn('** Language: ' + TransMgr.LanguageName);
-  Caption := TransMgr.GetString('appname');
+  Caption := 'Velena (' + TransMgr.GetString('appname') + ')';
   STMessage.Caption := TransMgr.GetString('whitetomove');
   MIGame.Caption := TransMgr.GetString('game');
   MINew.Caption := TransMgr.GetString('newgame');
@@ -317,7 +320,7 @@ begin
     FProcess.Execute;
   end else
   begin
-    LogLn('** Cannot find ''' + CExecutable + '''.');
+    LogLn('** Cannot find ' + CExecutable);
     MIHumanVsHuman.Click;
     MIComputerWhite.Enabled := FALSE;
     MIComputerBlack.Enabled := FALSE;
@@ -326,7 +329,15 @@ end;
 
 procedure TForm1.MIAboutClick(Sender: TObject);
 begin
+  (*
   ShowMessage('Velena Connect Four Engine by Giuliano Bertoletti.');
+  *)
+  with TAboutForm.Create(nil) do
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
 end;
 
 procedure TForm1.MIComputerBlackClick(Sender: TObject);
@@ -591,7 +602,7 @@ begin
   else
   begin
     (* Shouldn't happen, unless Velena stopped to work. *)
-    LogLn('** ' + {$I %LINE%} + ' Engine is not running.');
+    LogLn('** ' + {$I %LINE%} + ' Engine is not running');
     ShowMessage('Velena stopped unexpectedly.');
     MIHumanVsHuman.Click;
     MIComputerWhite.Enabled := FALSE;
@@ -625,7 +636,7 @@ begin
     FProcess.Input.Write(LCommand[1], Length(LCommand));
     LogLn('>> ' + Trim(LCommand));
   end else
-    LogLn('** ' + {$I %LINE%} + ' Engine is not running.');
+    LogLn('** ' + {$I %LINE%} + ' Engine is not running');
 end;
 
 end.

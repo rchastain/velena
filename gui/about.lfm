@@ -1,0 +1,190 @@
+object AboutForm: TAboutForm
+  Left = 477
+  Height = 424
+  Top = 207
+  Width = 395
+  AutoSize = True
+  BorderStyle = bsDialog
+  Caption = 'About GW'
+  ClientHeight = 424
+  ClientWidth = 395
+  OnCreate = FormCreate
+  OnShow = FormShow
+  Position = poMainFormCenter
+  ShowHint = True
+  LCLVersion = '2.0.10.0'
+  object IMIcon: TImage
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 12
+    Height = 128
+    Top = 12
+    Width = 128
+    BorderSpacing.Left = 12
+    BorderSpacing.Top = 12
+    Proportional = True
+  end
+  object LBTitle: TLabel
+    AnchorSideLeft.Control = IMIcon
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = IMIcon
+    Left = 156
+    Height = 43
+    Top = 12
+    Width = 108
+    BorderSpacing.Left = 16
+    BorderSpacing.Right = 16
+    Caption = 'Velena'
+    Font.Height = -32
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object LBCredits: TLabel
+    AnchorSideLeft.Control = PNCredits
+    AnchorSideTop.Control = IMIcon
+    AnchorSideTop.Side = asrBottom
+    Left = 12
+    Height = 17
+    Top = 156
+    Width = 52
+    BorderSpacing.Top = 16
+    Caption = 'Credits:'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object PNCredits: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = LBCredits
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Side = asrBottom
+    Left = 12
+    Height = 69
+    Top = 177
+    Width = 368
+    Anchors = [akTop, akLeft, akRight]
+    AutoSize = True
+    BorderSpacing.Left = 12
+    BorderSpacing.Top = 4
+    BorderSpacing.Right = 12
+    BevelOuter = bvNone
+    BorderStyle = bsSingle
+    ClientHeight = 67
+    ClientWidth = 366
+    Color = clWindow
+    ParentColor = False
+    TabOrder = 0
+    object LBCompiler: TLabel
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = PNCredits
+      AnchorSideRight.Side = asrBottom
+      Left = 36
+      Height = 17
+      Top = 8
+      Width = 60
+      Anchors = [akTop, akRight]
+      BorderSpacing.Top = 8
+      Caption = 'Compiler:'
+      ParentColor = False
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object LBFPC: TLabel
+      AnchorSideLeft.Control = LBGiuliano
+      AnchorSideTop.Control = LBCompiler
+      Cursor = crHandPoint
+      Left = 123
+      Height = 17
+      Hint = 'https://www.freepascal.org/'
+      Top = 8
+      Width = 127
+      Caption = 'Free Pascal Compiler'
+      Font.Color = clBlue
+      ParentColor = False
+      ParentFont = False
+      OnClick = LabelClick
+      OnMouseEnter = LabelMouseEnter
+      OnMouseLeave = LabelMouseLeave
+    end
+    object LBLazarus: TLabel
+      AnchorSideLeft.Control = LBGiuliano
+      AnchorSideTop.Control = LBFPC
+      AnchorSideTop.Side = asrBottom
+      Cursor = crHandPoint
+      Left = 123
+      Height = 17
+      Hint = 'https://www.lazarus-ide.org/'
+      Top = 29
+      Width = 47
+      BorderSpacing.Top = 4
+      Caption = 'Lazarus'
+      Font.Color = clBlue
+      ParentColor = False
+      ParentFont = False
+      OnClick = LabelClick
+      OnMouseEnter = LabelMouseEnter
+      OnMouseLeave = LabelMouseLeave
+    end
+    object LBIDE: TLabel
+      AnchorSideTop.Control = LBLazarus
+      AnchorSideRight.Side = asrBottom
+      Left = 70
+      Height = 17
+      Top = 29
+      Width = 26
+      Anchors = [akTop, akRight]
+      Caption = 'IDE:'
+      ParentColor = False
+      ParentShowHint = False
+    end
+    object LBAuthor: TLabel
+      AnchorSideLeft.Control = PNCredits
+      AnchorSideTop.Control = LBGiuliano
+      AnchorSideRight.Side = asrBottom
+      Left = 16
+      Height = 17
+      Top = 50
+      Width = 91
+      BorderSpacing.Left = 16
+      Caption = 'Velena author:'
+      ParentColor = False
+    end
+    object LBGiuliano: TLabel
+      AnchorSideLeft.Control = LBAuthor
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Side = asrBottom
+      Left = 123
+      Height = 17
+      Top = 50
+      Width = 113
+      BorderSpacing.Left = 16
+      BorderSpacing.Top = 4
+      Caption = 'Giuliano Bertoletti'
+      ParentColor = False
+      ParentFont = False
+      ParentShowHint = False
+      OnClick = LabelClick
+    end
+  end
+  object BitBtn1: TBitBtn
+    AnchorSideTop.Control = PNCredits
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = PNCredits
+    AnchorSideRight.Side = asrBottom
+    Left = 335
+    Height = 33
+    Top = 254
+    Width = 45
+    Anchors = [akTop, akRight]
+    AutoSize = True
+    BorderSpacing.Top = 8
+    BorderSpacing.Bottom = 12
+    Cancel = True
+    Caption = 'Close'
+    Default = True
+    ModalResult = 11
+    ImageIndex = 5
+    TabOrder = 1
+  end
+end

@@ -4,7 +4,7 @@ object Form1: TForm1
   Top = 87
   Width = 477
   AutoSize = True
-  Caption = 'Four-in-a-row'
+  Caption = 'Velena'
   ClientHeight = 520
   ClientWidth = 477
   Menu = MMMenu
