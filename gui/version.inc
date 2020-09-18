@@ -1,6 +1,6 @@
 
 const
-  CAppVersion = '0.1.0';
+  CAppVersion = '0.1.1';
   CAppName = 'Velena GUI';
   CBuild = 'build ' + {$I %DATE%} + ' ' + {$I %TIME%};
   CCompiler = 'Free Pascal ' + {$I %FPCVERSION%};
