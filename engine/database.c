@@ -17,7 +17,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include <unistd.h> // RC
+#ifdef _WIN32
+#include <windows.h>
+#define sleep(seconds) Sleep((seconds) * 1000) 
+#else
+#include <unistd.h>
+#endif
 
 #include "connect4.h"
 #include "con4vals.h"

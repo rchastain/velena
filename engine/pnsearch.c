@@ -18,11 +18,12 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <time.h>
-
-/*
-#include <windows.h> // RC
-*/
-#include <unistd.h> // RC
+#ifdef _WIN32
+#include <windows.h>
+#define sleep(seconds) Sleep((seconds) * 1000) 
+#else
+#include <unistd.h>
+#endif
 
 #include "connect4.h"
 #include "con4vals.h"
@@ -31,18 +32,11 @@
 #include "proto.h"
 
 #define AUTO_BOOK "autobook.cn4"
-
 #define SCREENSAVER 10
-
 #define DATABASEFILE    "openbook.cn4"
 #define DATABASELOGFILE "openbook.log"
-
 #define BADDATABASEFILE "openbook.bad"
 #define NEWDATABASEFILE "openbook.new"
-
-/*
-#define sleep(n) Sleep(1000 * n) // RC
-*/
 
 short nodeseq[] = { 3, 2, 4, 5, 1, 0, 6 }; // This is the sequence we follow to
 // scan the seven moves available

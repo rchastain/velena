@@ -21,12 +21,15 @@
 #include <string.h>
 #include <stdlib.h>
 #include <malloc.h>
-
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-
+#ifdef _WIN32
+#include <windows.h>
+#define sleep(seconds) Sleep((seconds) * 1000) 
+#else
 #include <unistd.h>
+#endif
 
 #include "connect4.h"
 #include "pnsearch.h"
